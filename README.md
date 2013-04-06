@@ -3,7 +3,8 @@ node-middleware
 
 A nodejs middleware to performing async acces data
 
-Architecture description :
+Architecture description 
+===============
 
 
     view (restfull call)
@@ -15,3 +16,4 @@ Architecture description :
     send data 
 
               
+![Architecture diagram](https://raw.github.com/amassi/node-middleware/master/architecture.png "Node middleware architecture to mobile application")
