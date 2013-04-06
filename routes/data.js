@@ -1,20 +1,18 @@
 
 /*
- * GET users listing.
+ *  Configuration external API overt HTTPP 
  */
 
 var http = require('http')
 
 var options = {
-  host: 'api.openweathermap.org',
-  port: 80,
-  path: '/data/2.1/find/name?q=Roma'
+  host: 'localhost',
+  port: 3000,
+  path: '/store'
 };
 
-exports.get = function(req, res){
-  
-
- http.get(options,function(response){
+exports.findAll = function(req, res){
+	http.get(options,function(response){
 		//console.log("hi",response);
 		//res.writeHead(200, {'Content-Type': 'application/json'});
 		var pageData = "";
@@ -23,18 +21,42 @@ exports.get = function(req, res){
 	    response.on('data', function (chunk) {
 	      pageData += chunk;
 	    });
- 
-	    //write the data at the end
 	    response.on('end', function(){
 		  var data_parse = JSON.parse(pageData);
-		  
-	      res.send(data_parse.list);
-	      //res.end();
+	      //res.send(data_parse.list);
+		  res.jsonp(data_parse.places);
 	    });
- 
+
 	});
+  
+};
+exports.findById = function(req, res){
+	http.get(options,function(response){
+		//console.log("hi",response);
+		//res.writeHead(200, {'Content-Type': 'application/json'});
+		var pageData = "";
+	    response.setEncoding('utf8');
+	    //stream the data into the response
+	    response.on('data', function (chunk) {
+	      pageData += chunk;
+	    });
+	    response.on('end', function(){
+		  var data_parse = JSON.parse(pageData);
+	      //res.send(data_parse.list);
+		  res.jsonp(data_parse.places[req.params.id]);
+	    });
+
+	}); 
 };
 
-exports.set = function(req, res){
+exports.add = function(req, res){
+		res.send("respond with a resource" + req.params.id); 
+};
+
+exports.update = function(req, res){
+		res.send("respond with a resource" + req.params.id); 
+};
+
+exports.delete = function(req, res){
 		res.send("respond with a resource" + req.params.id); 
 };

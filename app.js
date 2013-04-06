@@ -6,6 +6,7 @@
 var express = require('express')
   , routes = require('./routes')
   , data = require('./routes/data')
+  , store = require('./routes/store')  
   , http = require('http')
   , path = require('path');
 
@@ -20,6 +21,8 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
+  // this enables jsonp support
+  app.enable("jsonp callback");
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
@@ -28,8 +31,9 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/data', data.get);
-app.get('/data/:id', data.set);
+app.get('/data', data.findAll);
+app.get('/data/:id', data.findById);
+app.get('/store', store.get);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
