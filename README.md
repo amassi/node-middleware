@@ -1,14 +1,15 @@
 Introduction
 ===============
 <p>
-Node middleware is simple layer between Client architecture (Eg mobile device) and Persistent data.  <br />
+Node middleware is a simple layer between Client architecture (Eg mobile device) and Persistent data layer.  <br />
 The informations are exchanged over HTTP in Json format. <br />
-Whit nodejs we can use Event-drive development to write a middleware layer and send the data overt http only if the callback will be data.
+Whit nodejs we can use Event-drive development to write a middleware layer and send the data only after callback function.
 </p>
 <p>
 For example imagine mobile architecture in JQuery Mobile and Backbone.js. <br />
-When the client sends a request to get some data, the middleware take the control and dispatch the request with a callback function (mabybe in the same server or in API overt http).
-So the client device does not wait a response and it keep browser control. Obviously the time to get a data it depends of the kind of data layer, connection and more,  but node-middleware helps the perception of user speed navigation.
+When the client sends a request to get some data, the middleware take the control and dispatch the request with a callback function (maybe in the same server or Rest API ).<br />
+So the client device does not wait a response and it keep browser control. <br />
+Obviously the time to get a data it depends of the kind of data layer, connection and more,  but node-middleware helps the perception of user speed navigation.
 </p>
 
 Architecture  
