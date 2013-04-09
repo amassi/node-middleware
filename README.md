@@ -16,6 +16,10 @@ Architecture
 ===============
              
 ![Architecture diagram](https://raw.github.com/amassi/node-middleware/master/architecture.png "Node middleware architecture to mobile application")
+------
+![Architecture diagram](https://raw.github.com/amassi/node-middleware/master/sequenceDiagram.png "Node middleware architecture to mobile application")
+
+
 
 Step 1
 ------
@@ -23,11 +27,19 @@ Step 1
    
 Step 2
 ------
-  l aunch getData() with callback  
+  the client is avaiable to send another request
    [is a non-blocking process for the client]
    
 Step 3
 ------
-   show data in Json format when the are availables
+   launch getData() with callback 
+   
+Step 4
+------
+   data returns to node middleware
+   
+Step 5  
+------   
+   show data in Json format 
 
  
